@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class BlogDTO {
+public class BlogInfo {
     private Integer blogId;
     private String blogName;
     private String blogAddress;

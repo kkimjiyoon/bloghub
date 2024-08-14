@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 및 회원가입</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/assets/css/login.css}">
+</head>
+<body>
+<div id="container" class="container">
+    <!-- FORM SECTION -->
+    <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+            <div class="form-wrapper align-items-center">
+                <form th:action="@{/signup}" method="post" class="form sign-up">
+                    <div class="input-group">
+                        <i class='bx bxs-user'></i>
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bx-mail-send'></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+                    </div>
+                    <button type="submit">
+                        Sign up
+                    </button>
+                    <p>
+                        <span>Already have an account?</span>
+                        <b onclick="toggle()" class="pointer">Sign in here</b>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <div class="col align-items-center flex-col sign-in">
+            <div class="form-wrapper align-items-center">
+                <form th:action="@{/login}" method="post" class="form sign-in">
+                    <div th:if="${param.error}" class="alert alert-error">
+                        Invalid username and password.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        You have been logged out.
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-user'></i>
+                        <input type="text" name="userId" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class='bx bxs-lock-alt'></i>
+                        <input type="password" name="userPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit">
+                        Sign in
+                    </button>
+                    <p>
+                        <b>Forgot password?</b>
+                    </p>
+                    <p>
+                        <span>Don't have an account?</span>
+                        <b onclick="toggle()" class="pointer">Sign up here</b>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <!-- END SIGN IN -->
+    </div>
+    <!-- END FORM SECTION -->
+    <!-- CONTENT SECTION -->
+    <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="text sign-in">
+                <h2>Welcome Back</h2>
+            </div>
+            <div class="img sign-in">
+            </div>
+        </div>
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="img sign-up">
+            </div>
+            <div class="text sign-up">
+                <h2>Join with us</h2>
+            </div>
+        </div>
+        <!-- END SIGN UP CONTENT -->
+    </div>
+    <!-- END CONTENT SECTION -->
+</div>
+<script th:src="@{/assets/js/login.js}"></script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="ko">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>로그인 / 회원가입</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            box-sizing: border-box;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            font-family: 'Noto Sans KR', sans-serif;-->
+<!--        }-->
+<!--        body {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            min-height: 100vh;-->
+<!--            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);-->
+<!--        }-->
+<!--        .container {-->
+<!--            background-color: #fff;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            width: 768px;-->
+<!--            max-width: 100%;-->
+<!--            min-height: 480px;-->
+<!--        }-->
+<!--        .form-container {-->
+<!--            position: absolute;-->
+<!--            top: 0;-->
+<!--            height: 100%;-->
+<!--            transition: all 0.6s ease-in-out;-->
+<!--        }-->
+<!--        .sign-in-container {-->
+<!--            left: 0;-->
+<!--            width: 50%;-->
+<!--            z-index: 2;-->
+<!--        }-->
+<!--        .sign-up-container {-->
+<!--            left: 0;-->
+<!--            width: 50%;-->
+<!--            opacity: 0;-->
+<!--            z-index: 1;-->
+<!--        }-->
+<!--        .container.right-panel-active .sign-in-container {-->
+<!--            transform: translateX(100%);-->
+<!--        }-->
+<!--        .container.right-panel-active .sign-up-container {-->
+<!--            transform: translateX(100%);-->
+<!--            opacity: 1;-->
+<!--            z-index: 5;-->
+<!--        }-->
+<!--        form {-->
+<!--            background-color: #FFFFFF;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            flex-direction: column;-->
+<!--            padding: 0 50px;-->
+<!--            height: 100%;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            font-weight: bold;-->
+<!--            margin: 0;-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+<!--        input {-->
+<!--            background-color: #eee;-->
+<!--            border: none;-->
+<!--            padding: 12px 15px;-->
+<!--            margin: 8px 0;-->
+<!--            width: 100%;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+<!--        button {-->
+<!--            border-radius: 20px;-->
+<!--            border: 1px solid #8ec5fc;-->
+<!--            background-color: #8ec5fc;-->
+<!--            color: #FFFFFF;-->
+<!--            font-size: 12px;-->
+<!--            font-weight: bold;-->
+<!--            padding: 12px 45px;-->
+<!--            letter-spacing: 1px;-->
+<!--            text-transform: uppercase;-->
+<!--            transition: transform 80ms ease-in;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+<!--        button:active {-->
+<!--            transform: scale(0.95);-->
+<!--        }-->
+<!--        button.ghost {-->
+<!--            background-color: transparent;-->
+<!--            border-color: #FFFFFF;-->
+<!--        }-->
+<!--        .overlay-container {-->
+<!--            position: absolute;-->
+<!--            top: 0;-->
+<!--            left: 50%;-->
+<!--            width: 50%;-->
+<!--            height: 100%;-->
+<!--            overflow: hidden;-->
+<!--            transition: transform 0.6s ease-in-out;-->
+<!--            z-index: 100;-->
+<!--        }-->
+<!--        .container.right-panel-active .overlay-container{-->
+<!--            transform: translateX(-100%);-->
+<!--        }-->
+<!--        .overlay {-->
+<!--            background: #8ec5fc;-->
+<!--            background: -webkit-linear-gradient(to right, #e0c3fc, #8ec5fc);-->
+<!--            background: linear-gradient(to right, #e0c3fc, #8ec5fc);-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-size: cover;-->
+<!--            background-position: 0 0;-->
+<!--            color: #FFFFFF;-->
+<!--            position: relative;-->
+<!--            left: -100%;-->
+<!--            height: 100%;-->
+<!--            width: 200%;-->
+<!--            transform: translateX(0);-->
+<!--            transition: transform 0.6s ease-in-out;-->
+<!--        }-->
+<!--        .container.right-panel-active .overlay {-->
+<!--            transform: translateX(50%);-->
+<!--        }-->
+<!--        .overlay-panel {-->
+<!--            position: absolute;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            flex-direction: column;-->
+<!--            padding: 0 40px;-->
+<!--            text-align: center;-->
+<!--            top: 0;-->
+<!--            height: 100%;-->
+<!--            width: 50%;-->
+<!--            transform: translateX(0);-->
+<!--            transition: transform 0.6s ease-in-out;-->
+<!--        }-->
+<!--        .overlay-left {-->
+<!--            transform: translateX(-20%);-->
+<!--        }-->
+<!--        .container.right-panel-active .overlay-left {-->
+<!--            transform: translateX(0);-->
+<!--        }-->
+<!--        .overlay-right {-->
+<!--            right: 0;-->
+<!--            transform: translateX(0);-->
+<!--        }-->
+<!--        .container.right-panel-active .overlay-right {-->
+<!--            transform: translateX(20%);-->
+<!--        }-->
+<!--        @media (max-width: 768px) {-->
+<!--            .container {-->
+<!--                min-height: 800px;-->
+<!--            }-->
+<!--            .form-container, .overlay-container {-->
+<!--                width: 100%;-->
+<!--                height: 50%;-->
+<!--                left: 0;-->
+<!--            }-->
+<!--            .sign-in-container, .sign-up-container {-->
+<!--                width: 100%;-->
+<!--                top: 0;-->
+<!--            }-->
+<!--            .overlay-container {-->
+<!--                top: 50%;-->
+<!--                left: 0;-->
+<!--            }-->
+<!--            .overlay {-->
+<!--                left: 0;-->
+<!--                width: 100%;-->
+<!--                height: 200%;-->
+<!--            }-->
+<!--            .overlay-panel {-->
+<!--                width: 100%;-->
+<!--                height: 50%;-->
+<!--            }-->
+<!--            .overlay-left {-->
+<!--                top: 0;-->
+<!--                transform: translateY(-20%);-->
+<!--            }-->
+<!--            .container.right-panel-active .overlay-left {-->
+<!--                transform: translateY(0);-->
+<!--            }-->
+<!--            .overlay-right {-->
+<!--                bottom: 0;-->
+<!--                top: auto;-->
+<!--                transform: translateY(0);-->
+<!--            }-->
+<!--            .container.right-panel-active .overlay-right {-->
+<!--                transform: translateY(-20%);-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container" id="container">-->
+<!--    <div class="form-container sign-up-container">-->
+<!--        <form th:action="@{/signup}" method="post">-->
+<!--            <h1>계정 만들기</h1>-->
+<!--            <input type="text" name="username" placeholder="이름" required />-->
+<!--            <input type="email" name="email" placeholder="이메일" required />-->
+<!--            <input type="password" name="password" placeholder="비밀번호" required />-->
+<!--            <button type="submit">가입하기</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div class="form-container sign-in-container">-->
+<!--        <form th:action="@{/login}" method="post">-->
+<!--            <h1>로그인</h1>-->
+<!--            <input type="email" name="username" placeholder="이메일" required />-->
+<!--            <input type="password" name="password" placeholder="비밀번호" required />-->
+<!--            <a href="#">비밀번호를 잊으셨나요?</a>-->
+<!--            <button type="submit">로그인</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div class="overlay-container">-->
+<!--        <div class="overlay">-->
+<!--            <div class="overlay-panel overlay-left">-->
+<!--                <h1>환영합니다!</h1>-->
+<!--                <p>로그인하고 서비스를 이용해보세요.</p>-->
+<!--                <button class="ghost" id="signIn">로그인</button>-->
+<!--            </div>-->
+<!--            <div class="overlay-panel overlay-right">-->
+<!--                <h1>안녕하세요!</h1>-->
+<!--                <p>개인정보를 입력하고 계정을 만들어보세요.</p>-->
+<!--                <button class="ghost" id="signUp">가입하기</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script th:inline="javascript">-->
+<!--    const signUpButton = document.getElementById('signUp');-->
+<!--    const signInButton = document.getElementById('signIn');-->
+<!--    const container = document.getElementById('container');-->
+
+<!--    signUpButton.addEventListener('click', () => {-->
+<!--        container.classList.add("right-panel-active");-->
+<!--    });-->
+
+<!--    signInButton.addEventListener('click', () => {-->
+<!--        container.classList.remove("right-panel-active");-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

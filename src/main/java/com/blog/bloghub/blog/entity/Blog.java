@@ -32,7 +32,11 @@ public class Blog {
     @Column(name = "blog_description")
     private String blogDescription;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "blog_category_id")
+    private BlogCategory blogCategory;
 }

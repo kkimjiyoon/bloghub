@@ -1,0 +1,18 @@
+### 회원 생성
+POST http://localhost:8080/api/bloghub/register
+Content-Type: application/json
+
+{
+  "userId": "admin",
+  "userPassword": "12345",
+  "userName": "관리자",
+  "userEmail": "admin@gmail.com"
+}
+
+### 회원 정보 조회
+GET http://localhost:8080/api/bloghub/userInfo?userId=admin
+Accept: application/json
+
+###
+
+

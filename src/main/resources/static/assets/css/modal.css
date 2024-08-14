@@ -1,0 +1,43 @@
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.logo span {
+    color: #ff4081;
+}
+.modal-body {
+    padding: 2rem;
+}
+.form-control {
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+}
+.btn-submit {
+    background-color: #ff4081;
+    color: white;
+    width: 100%;
+}
+.forgot-password, .login-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 14px;
+}
+.forgot-password a, .login-link a {
+    color: #ff4081;
+    text-decoration: none;
+}
+.or-divider {
+    text-align: center;
+    margin: 1rem 0;
+    color: #888;
+}
+.btn-kakao {
+    background-color: #FEE500;
+    color: #000;
+    width: 100%;
+}
+.kakao-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

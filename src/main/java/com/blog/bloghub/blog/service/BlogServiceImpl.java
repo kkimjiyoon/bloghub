@@ -1,7 +1,7 @@
 package com.blog.bloghub.blog.service;
 
 import com.blog.bloghub.blog.dto.BlogCreateRequest;
-import com.blog.bloghub.blog.dto.BlogDTO;
+import com.blog.bloghub.blog.dto.BlogInfo;
 import com.blog.bloghub.blog.dto.BlogModifyRequest;
 import com.blog.bloghub.blog.entity.Blog;
 import com.blog.bloghub.blog.repository.BlogRepository;
@@ -36,7 +36,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public BlogDTO getBlog(String userId) {
+    public BlogInfo getBlog(String userId) {
         return blogRepository.findByUserId(userId);
     }
 

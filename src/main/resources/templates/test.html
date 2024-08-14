@@ -1,0 +1,216 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="ko">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>로그인/회원가입 모달</title>-->
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <style>-->
+<!--        .nav-tabs .nav-link {-->
+<!--            color: #495057;-->
+<!--        }-->
+<!--        .nav-tabs .nav-link.active {-->
+<!--            color: #007bff;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; 모달 열기 버튼 &ndash;&gt;-->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginSignupModal">-->
+<!--    로그인/회원가입-->
+<!--</button>-->
+
+<!--&lt;!&ndash; 로그인/회원가입 모달 &ndash;&gt;-->
+<!--<div class="modal fade" id="loginSignupModal" tabindex="-1" aria-labelledby="loginSignupModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="loginSignupModalLabel">로그인/회원가입</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <ul class="nav nav-tabs" id="myTab" role="tablist">-->
+<!--                    <li class="nav-item" role="presentation">-->
+<!--                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">로그인</button>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item" role="presentation">-->
+<!--                        <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab" aria-controls="signup" aria-selected="false">회원가입</button>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="tab-content" id="myTabContent">-->
+<!--                    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">-->
+<!--                        <form th:action="@{/login}" method="post" class="mt-3">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="loginEmail" class="form-label">이메일</label>-->
+<!--                                <input type="email" class="form-control" id="loginEmail" name="username" required>-->
+<!--                            </div>-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="loginPassword" class="form-label">비밀번호</label>-->
+<!--                                <input type="password" class="form-control" id="loginPassword" name="password" required>-->
+<!--                            </div>-->
+<!--                            <div class="mb-3 form-check">-->
+<!--                                <input type="checkbox" class="form-check-input" id="rememberMe" name="remember-me">-->
+<!--                                <label class="form-check-label" for="rememberMe">로그인 상태 유지</label>-->
+<!--                            </div>-->
+<!--                            <button type="submit" class="btn btn-primary">로그인</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">-->
+<!--                        <form th:action="@{/signup}" method="post" class="mt-3">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="signupUsername" class="form-label">이름</label>-->
+<!--                                <input type="text" class="form-control" id="signupUsername" name="username" required>-->
+<!--                            </div>-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="signupEmail" class="form-label">이메일</label>-->
+<!--                                <input type="email" class="form-control" id="signupEmail" name="email" required>-->
+<!--                            </div>-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="signupPassword" class="form-label">비밀번호</label>-->
+<!--                                <input type="password" class="form-control" id="signupPassword" name="password" required>-->
+<!--                            </div>-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="signupPasswordConfirm" class="form-label">비밀번호 확인</label>-->
+<!--                                <input type="password" class="form-control" id="signupPasswordConfirm" name="passwordConfirm" required>-->
+<!--                            </div>-->
+<!--                            <button type="submit" class="btn btn-primary">회원가입</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Bootstrap Bundle with Popper &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WATTHEPEDIA 로그인/회원가입 모달</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #ff4081;
+        }
+        .modal-body {
+            padding: 2rem;
+        }
+        .form-control {
+            margin-bottom: 1rem;
+            background-color: #f8f9fa;
+        }
+        .btn-submit {
+            background-color: #ff4081;
+            color: white;
+            width: 100%;
+        }
+        .forgot-password, .login-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 14px;
+        }
+        .forgot-password a, .login-link a {
+            color: #ff4081;
+            text-decoration: none;
+        }
+        .or-divider {
+            text-align: center;
+            margin: 1rem 0;
+            color: #888;
+        }
+        .btn-kakao {
+            background-color: #FEE500;
+            color: #000;
+            width: 100%;
+        }
+        .kakao-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- 모달 트리거 버튼 -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal">
+    로그인/회원가입 모달 열기
+</button>
+
+<!-- 로그인/회원가입 모달 -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title logo" id="authModalLabel"><span>WATTHE</span>PEDIA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 로그인 폼 -->
+                <div id="loginForm">
+                    <h2 class="text-center mb-4">로그인</h2>
+                    <form>
+                        <input type="email" class="form-control" placeholder="이메일" required>
+                        <input type="password" class="form-control" placeholder="비밀번호" required>
+                        <button type="submit" class="btn btn-submit">로그인</button>
+                    </form>
+                    <div class="forgot-password">
+                        <a href="#">비밀번호를 잊어버리셨나요?</a><br>
+                        <a href="#" onclick="showSignupForm()">계정이 없으신가요? 회원가입</a>
+                    </div>
+                    <div class="or-divider">OR</div>
+                    <button class="btn btn-kakao">
+                        <img src="kakao-icon.png" alt="Kakao" class="kakao-icon">
+                        카카오로 로그인하기
+                    </button>
+                </div>
+
+                <!-- 회원가입 폼 -->
+                <div id="signupForm" style="display: none;">
+                    <h2 class="text-center mb-4">회원가입</h2>
+                    <form>
+                        <input type="text" class="form-control" placeholder="이름" required>
+                        <input type="email" class="form-control" placeholder="이메일" required>
+                        <input type="password" class="form-control" placeholder="비밀번호" required>
+                        <button type="submit" class="btn btn-submit">회원가입</button>
+                    </form>
+                    <div class="login-link">
+                        <a href="#" onclick="showLoginForm()">이미 가입하셨나요? 로그인</a>
+                    </div>
+                    <div class="or-divider">OR</div>
+                    <button class="btn btn-kakao">
+                        <img src="kakao-icon.png" alt="Kakao" class="kakao-icon">
+                        카카오로 로그인하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function showSignupForm() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('signupForm').style.display = 'block';
+    }
+
+    function showLoginForm() {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+    }
+</script>
+</body>
+</html>
