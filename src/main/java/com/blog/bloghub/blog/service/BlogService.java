@@ -1,8 +1,16 @@
 package com.blog.bloghub.blog.service;
 
+import com.blog.bloghub.blog.dto.BlogCreateRequest;
+import com.blog.bloghub.blog.dto.BlogDTO;
+import com.blog.bloghub.blog.dto.BlogModifyRequest;
+
 public interface BlogService {
 
-    void createBlog(String userId);
+    void createBlog(String userId, BlogCreateRequest request);
 
+    void modifyBlog(String userId, BlogModifyRequest request);
 
+    BlogDTO getBlog(String userId);
+
+    void deleteBlog(String userId);
 }
