@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/bloghub")
 public class UserRestController {
-
     private final UserService userService;
+
+//    public UserRestController(@Qualifier(value = "userServiceImpl") UserService userService) { // 생성자 주입 @Qualifier 설정 방법
+//        this.userService = userService;
+//    }
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserCreateRequest request) {
@@ -27,4 +30,5 @@ public class UserRestController {
 
         return ResponseEntity.ok().body(userService.getUser(userId));
     }
+    
 }

@@ -6,8 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface BlogRepository extends JpaRepository<Blog, Integer> {
-    @Query("SELECT new com.blog.bloghub.blog.dto.BlogInfo(b.blogId, b.blogName, b.blogAddress, b.blogNickname, b.blogDescription) " +
+public interface BlogRepository extends JpaRepository<Blog, Long> {
+    @Query("SELECT new com.blog.bloghub.blog.dto.BlogInfo(b.blogId, b.blogName, b.blogAddress, b.blogNickname, b.blogDescription, b.blogCategory.blogCategoryId) " +
             "FROM Blog b WHERE b.user.userId = :userId")
     BlogInfo findByUserId(@Param("userId") String userId);
+
+    Blog findByUser_UserId(String userId);
+
+
 }

@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### 회원 정보 조회
-GET http://localhost:8080/api/bloghub/userInfo?userId=admin
+GET http://localhost:8080/api/bloghub/userInfo?userId=admin123
 Accept: application/json
 
 ###

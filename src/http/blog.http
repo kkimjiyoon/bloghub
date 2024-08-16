@@ -1,0 +1,30 @@
+### 블로그 생성
+POST http://localhost:8080/api/bloghub/blog/admin
+Content-Type: application/json
+
+{
+  "blogName": "관리자의 블로그",
+  "blogAddress": "admin.bloghub.com",
+  "blogNickname": "관리자",
+  "blogDescription": "관리자의 블로그에 오신 걸 환영합니다~",
+  "blogCategoryId": 2
+}
+
+### 블로그 수정
+PUT http://localhost:8080/api/bloghub/blog/admin
+Content-Type: application/json
+
+{
+  "blogName": "admin의 블로그",
+  "blogNickname": "haha",
+  "blogDescription": "블로그 설명 수정",
+  "blogCategoryId": 3
+}
+
+### 블로그 조회
+GET http://localhost:8080/api/bloghub/blog/admin
+Accept: application/json
+
+### 블로그 삭제
+DELETE http://localhost:8080/api/bloghub/blog/admin
+Accept: application/json

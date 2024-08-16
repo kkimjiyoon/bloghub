@@ -15,7 +15,8 @@ public class Blog {
 
     @Id
     @Column(name = "blog_id")
-    private Integer blogId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long blogId;
 
     @Setter
     @Column(name = "blog_name")
@@ -36,6 +37,7 @@ public class Blog {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "blog_category_id")
     private BlogCategory blogCategory;

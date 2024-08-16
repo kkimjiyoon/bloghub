@@ -1,22 +1,35 @@
 package com.blog.bloghub.category.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.blog.bloghub.blog.entity.Blog;
+import com.blog.bloghub.user.entity.User;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Builder
 @Getter
 @Entity
 @Table(name = "category")
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category {
 
     @Id
     @Column(name = "category_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer categoryId;
+    private Long categoryId;
 
+    @Setter
     @Column(name = "category_name")
     private String categoryName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Category(String categoryName, User user) {
+        this.categoryName = categoryName;
+        this.user = user;
+    }
+
 }
