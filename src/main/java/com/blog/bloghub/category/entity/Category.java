@@ -1,6 +1,5 @@
 package com.blog.bloghub.category.entity;
 
-import com.blog.bloghub.blog.entity.Blog;
 import com.blog.bloghub.user.entity.User;
 import lombok.*;
 
@@ -26,10 +25,5 @@ public class Category {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Category(String categoryName, User user) {
-        this.categoryName = categoryName;
-        this.user = user;
-    }
 
 }

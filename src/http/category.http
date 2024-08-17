@@ -1,0 +1,36 @@
+### 카테고리 생성
+POST http://localhost:8080/api/bloghub/category/admin
+Content-Type: application/json
+
+{
+  "categoryName": "카테고리 1"
+}
+
+### 카테고리 생성
+POST http://localhost:8080/api/bloghub/category/admin
+Content-Type: application/json
+
+{
+  "categoryName": "카테고리 2"
+}
+
+### 카테고리 수정
+PUT http://localhost:8080/api/bloghub/category/admin/1
+Content-Type: application/json
+
+{
+  "categoryName": "카테고리 이름 수정함"
+}
+
+### 회원 카테고리들 조회
+GET http://localhost:8080/api/bloghub/category/admin
+Accept: application/json
+
+### 회원 카테고리 한 개 조회
+GET http://localhost:8080/api/bloghub/category/admin/1
+Accept: application/json
+
+### 카테고리 삭제
+DELETE http://localhost:8080/api/bloghub/category/admin/1
+Accept: application/json
+

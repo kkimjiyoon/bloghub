@@ -1,23 +1,21 @@
 package com.blog.bloghub.file.entity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.blog.bloghub.user.entity.User;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "file")
-@AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class File {
 
     @Id
     @Column(name = "file_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer fileId;
+    private Long fileId;
 
     @Column(name = "file_name")
     private String fileName;
@@ -33,4 +31,9 @@ public class File {
 
     @Column(name = "image_height")
     private Integer imageHeight;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
