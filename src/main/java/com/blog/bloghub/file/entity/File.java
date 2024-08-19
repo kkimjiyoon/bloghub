@@ -21,7 +21,7 @@ public class File {
     private String fileName;
 
     @Column(name = "file_size")
-    private Integer fileSize;
+    private Long fileSize;
 
     @Column(name = "file_path")
     private String filePath;

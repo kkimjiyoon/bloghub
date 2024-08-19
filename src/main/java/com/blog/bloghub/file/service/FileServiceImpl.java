@@ -9,6 +9,7 @@ import com.blog.bloghub.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -28,6 +29,7 @@ public class FileServiceImpl implements FileService {
     private final FileRepository fileRepository;
     private final UserRepository userRepository;
     @Override
+    @Transactional
     public FileResponse saveFile(MultipartFile multipartFile, String userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("회원을 찾을 수 없습니다."));
 
@@ -47,7 +49,7 @@ public class FileServiceImpl implements FileService {
 
             File file = new File();
             file.setFileName(fileName);
-            file.setFileSize((int)multipartFile.getSize());
+            file.setFileSize(multipartFile.getSize());
             file.setFilePath(filePath);
             file.setUser(user);
 
@@ -70,6 +72,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    @Transactional
     public File getFile(Long fileId) {
         return fileRepository.findById(fileId).orElseThrow(() -> new RuntimeException("File not found"));
     }

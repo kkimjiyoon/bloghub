@@ -1,0 +1,47 @@
+### 게시물 생성
+POST http://localhost:8080/api/bloghub/post/admin
+Content-Type: application/json
+
+{
+  "postTitle": "게시물 1",
+  "postContent": "게시물 내용",
+  "postStatus": "PUBLISHED",
+  "postIsPublic": true,
+  "allowComment": true
+}
+
+### 게시물 생성
+POST http://localhost:8080/api/bloghub/post/admin
+Content-Type: application/json
+
+{
+  "postTitle": "게시물 2",
+  "postContent": "게시물 내용",
+  "postStatus": "PUBLISHED",
+  "postIsPublic": true,
+  "allowComment": true
+}
+
+### 게시물 수정
+PUT http://localhost:8080/api/bloghub/post/2
+Content-Type: application/json
+
+{
+  "postTitle": "게시물 제목 수정",
+  "postContent": "게시물 내용",
+  "postStatus": "PUBLISHED",
+  "postIsPublic": true,
+  "allowComment": false
+}
+
+### 게시물 조회
+GET http://localhost:8080/api/bloghub/post/1
+Accept: application/json
+
+### 회원 모든 게시물 조회
+GET http://localhost:8080/api/bloghub/post?userId=admin
+Accept: application/json
+
+### 게시물 삭제
+DELETE http://localhost:8080/api/bloghub/post/1
+Accept: application/json
